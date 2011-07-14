@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D898C6F513CE9C0600FE191C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F413CE9C0600FE191C /* UIKit.framework */; };
+		D898C6F713CE9C0600FE191C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F613CE9C0600FE191C /* Foundation.framework */; };
+		D898C6F913CE9C0600FE191C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F813CE9C0600FE191C /* CoreGraphics.framework */; };
+		D898C6FF13CE9C0600FE191C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D898C6FD13CE9C0600FE191C /* InfoPlist.strings */; };
+		D898C70113CE9C0600FE191C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70013CE9C0600FE191C /* main.m */; };
+		D898C70513CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */; };
+		D898C70813CE9C0600FE191C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D898C70613CE9C0600FE191C /* MainWindow.xib */; };
+		D898C70B13CE9C0600FE191C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70A13CE9C0600FE191C /* RootViewController.m */; };
+		D898C70E13CE9C0600FE191C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D898C70C13CE9C0600FE191C /* RootViewController.xib */; };
+		D898C71613CE9C0600FE191C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C71513CE9C0600FE191C /* SenTestingKit.framework */; };
+		D898C71713CE9C0600FE191C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F413CE9C0600FE191C /* UIKit.framework */; };
+		D898C71813CE9C0600FE191C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F613CE9C0600FE191C /* Foundation.framework */; };
+		D898C71913CE9C0600FE191C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F813CE9C0600FE191C /* CoreGraphics.framework */; };
+		D898C72113CE9C0600FE191C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D898C71F13CE9C0600FE191C /* InfoPlist.strings */; };
+		D898C72313CE9C0600FE191C /* NDRotatingControllerViewTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D898C72213CE9C0600FE191C /* NDRotatingControllerViewTests.h */; };
+		D898C72513CE9C0600FE191C /* NDRotatingControllerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C72413CE9C0600FE191C /* NDRotatingControllerViewTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D898C71A13CE9C0600FE191C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D898C6E713CE9C0500FE191C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D898C6EF13CE9C0600FE191C;
+			remoteInfo = NDRotatingControllerView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D898C6F013CE9C0600FE191C /* NDRotatingControllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRotatingControllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D898C6F413CE9C0600FE191C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D898C6F613CE9C0600FE191C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D898C6F813CE9C0600FE191C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D898C6FC13CE9C0600FE191C /* NDRotatingControllerView-Info.plist */ = {isa = PBXFileReference; path = "NDRotatingControllerView-Info.plist"; sourceTree = "<group>"; };
+		D898C6FE13CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D898C70013CE9C0600FE191C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D898C70213CE9C0600FE191C /* NDRotatingControllerView-Prefix.pch */ = {isa = PBXFileReference; path = "NDRotatingControllerView-Prefix.pch"; sourceTree = "<group>"; };
+		D898C70313CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.h */ = {isa = PBXFileReference; path = NDRotatingControllerViewAppDelegate.h; sourceTree = "<group>"; };
+		D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDRotatingControllerViewAppDelegate.m; sourceTree = "<group>"; };
+		D898C70713CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		D898C70913CE9C0600FE191C /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		D898C70A13CE9C0600FE191C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D898C70D13CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		D898C71413CE9C0600FE191C /* NDRotatingControllerViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDRotatingControllerViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D898C71513CE9C0600FE191C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D898C71E13CE9C0600FE191C /* NDRotatingControllerViewTests-Info.plist */ = {isa = PBXFileReference; path = "NDRotatingControllerViewTests-Info.plist"; sourceTree = "<group>"; };
+		D898C72013CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D898C72213CE9C0600FE191C /* NDRotatingControllerViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDRotatingControllerViewTests.h; sourceTree = "<group>"; };
+		D898C72413CE9C0600FE191C /* NDRotatingControllerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDRotatingControllerViewTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D898C6ED13CE9C0600FE191C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C6F513CE9C0600FE191C /* UIKit.framework in Frameworks */,
+				D898C6F713CE9C0600FE191C /* Foundation.framework in Frameworks */,
+				D898C6F913CE9C0600FE191C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D898C71013CE9C0600FE191C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C71613CE9C0600FE191C /* SenTestingKit.framework in Frameworks */,
+				D898C71713CE9C0600FE191C /* UIKit.framework in Frameworks */,
+				D898C71813CE9C0600FE191C /* Foundation.framework in Frameworks */,
+				D898C71913CE9C0600FE191C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D898C6E513CE9C0500FE191C = {
+			isa = PBXGroup;
+			children = (
+				D898C6FA13CE9C0600FE191C /* NDRotatingControllerView */,
+				D898C71C13CE9C0600FE191C /* NDRotatingControllerViewTests */,
+				D898C6F313CE9C0600FE191C /* Frameworks */,
+				D898C6F113CE9C0600FE191C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D898C6F113CE9C0600FE191C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D898C6F013CE9C0600FE191C /* NDRotatingControllerView.app */,
+				D898C71413CE9C0600FE191C /* NDRotatingControllerViewTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D898C6F313CE9C0600FE191C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D898C6F413CE9C0600FE191C /* UIKit.framework */,
+				D898C6F613CE9C0600FE191C /* Foundation.framework */,
+				D898C6F813CE9C0600FE191C /* CoreGraphics.framework */,
+				D898C71513CE9C0600FE191C /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D898C6FA13CE9C0600FE191C /* NDRotatingControllerView */ = {
+			isa = PBXGroup;
+			children = (
+				D898C70313CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.h */,
+				D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */,
+				D898C70613CE9C0600FE191C /* MainWindow.xib */,
+				D898C70913CE9C0600FE191C /* RootViewController.h */,
+				D898C70A13CE9C0600FE191C /* RootViewController.m */,
+				D898C70C13CE9C0600FE191C /* RootViewController.xib */,
+				D898C6FB13CE9C0600FE191C /* Supporting Files */,
+			);
+			path = NDRotatingControllerView;
+			sourceTree = "<group>";
+		};
+		D898C6FB13CE9C0600FE191C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D898C6FC13CE9C0600FE191C /* NDRotatingControllerView-Info.plist */,
+				D898C6FD13CE9C0600FE191C /* InfoPlist.strings */,
+				D898C70013CE9C0600FE191C /* main.m */,
+				D898C70213CE9C0600FE191C /* NDRotatingControllerView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D898C71C13CE9C0600FE191C /* NDRotatingControllerViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D898C72213CE9C0600FE191C /* NDRotatingControllerViewTests.h */,
+				D898C72413CE9C0600FE191C /* NDRotatingControllerViewTests.m */,
+				D898C71D13CE9C0600FE191C /* Supporting Files */,
+			);
+			path = NDRotatingControllerViewTests;
+			sourceTree = "<group>";
+		};
+		D898C71D13CE9C0600FE191C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D898C71E13CE9C0600FE191C /* NDRotatingControllerViewTests-Info.plist */,
+				D898C71F13CE9C0600FE191C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D898C6EF13CE9C0600FE191C /* NDRotatingControllerView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D898C72813CE9C0600FE191C /* Build configuration list for PBXNativeTarget "NDRotatingControllerView" */;
+			buildPhases = (
+				D898C6EC13CE9C0600FE191C /* Sources */,
+				D898C6ED13CE9C0600FE191C /* Frameworks */,
+				D898C6EE13CE9C0600FE191C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NDRotatingControllerView;
+			productName = NDRotatingControllerView;
+			productReference = D898C6F013CE9C0600FE191C /* NDRotatingControllerView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D898C71313CE9C0600FE191C /* NDRotatingControllerViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D898C72B13CE9C0600FE191C /* Build configuration list for PBXNativeTarget "NDRotatingControllerViewTests" */;
+			buildPhases = (
+				D898C70F13CE9C0600FE191C /* Sources */,
+				D898C71013CE9C0600FE191C /* Frameworks */,
+				D898C71113CE9C0600FE191C /* Resources */,
+				D898C71213CE9C0600FE191C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D898C71B13CE9C0600FE191C /* PBXTargetDependency */,
+			);
+			name = NDRotatingControllerViewTests;
+			productName = NDRotatingControllerViewTests;
+			productReference = D898C71413CE9C0600FE191C /* NDRotatingControllerViewTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D898C6E713CE9C0500FE191C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = D898C6EA13CE9C0500FE191C /* Build configuration list for PBXProject "NDRotatingControllerView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D898C6E513CE9C0500FE191C;
+			productRefGroup = D898C6F113CE9C0600FE191C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D898C6EF13CE9C0600FE191C /* NDRotatingControllerView */,
+				D898C71313CE9C0600FE191C /* NDRotatingControllerViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D898C6EE13CE9C0600FE191C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C6FF13CE9C0600FE191C /* InfoPlist.strings in Resources */,
+				D898C70813CE9C0600FE191C /* MainWindow.xib in Resources */,
+				D898C70E13CE9C0600FE191C /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D898C71113CE9C0600FE191C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C72113CE9C0600FE191C /* InfoPlist.strings in Resources */,
+				D898C72313CE9C0600FE191C /* NDRotatingControllerViewTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D898C71213CE9C0600FE191C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D898C6EC13CE9C0600FE191C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C70113CE9C0600FE191C /* main.m in Sources */,
+				D898C70513CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */,
+				D898C70B13CE9C0600FE191C /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D898C70F13CE9C0600FE191C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D898C72513CE9C0600FE191C /* NDRotatingControllerViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D898C71B13CE9C0600FE191C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D898C6EF13CE9C0600FE191C /* NDRotatingControllerView */;
+			targetProxy = D898C71A13CE9C0600FE191C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D898C6FD13CE9C0600FE191C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D898C6FE13CE9C0600FE191C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D898C70613CE9C0600FE191C /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D898C70713CE9C0600FE191C /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		D898C70C13CE9C0600FE191C /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D898C70D13CE9C0600FE191C /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		D898C71F13CE9C0600FE191C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D898C72013CE9C0600FE191C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D898C72613CE9C0600FE191C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D898C72713CE9C0600FE191C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D898C72913CE9C0600FE191C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				INFOPLIST_FILE = "NDRotatingControllerView/NDRotatingControllerView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D898C72A13CE9C0600FE191C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				INFOPLIST_FILE = "NDRotatingControllerView/NDRotatingControllerView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D898C72C13CE9C0600FE191C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NDRotatingControllerView.app/NDRotatingControllerView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				INFOPLIST_FILE = "NDRotatingControllerViewTests/NDRotatingControllerViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D898C72D13CE9C0600FE191C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NDRotatingControllerView.app/NDRotatingControllerView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				INFOPLIST_FILE = "NDRotatingControllerViewTests/NDRotatingControllerViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D898C6EA13CE9C0500FE191C /* Build configuration list for PBXProject "NDRotatingControllerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D898C72613CE9C0600FE191C /* Debug */,
+				D898C72713CE9C0600FE191C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D898C72813CE9C0600FE191C /* Build configuration list for PBXNativeTarget "NDRotatingControllerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D898C72913CE9C0600FE191C /* Debug */,
+				D898C72A13CE9C0600FE191C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D898C72B13CE9C0600FE191C /* Build configuration list for PBXNativeTarget "NDRotatingControllerViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D898C72C13CE9C0600FE191C /* Debug */,
+				D898C72D13CE9C0600FE191C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D898C6E713CE9C0500FE191C /* Project object */;
+}
