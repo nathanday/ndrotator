@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "StandardViewController.h"
 
 @implementation RootViewController
 
@@ -36,14 +37,6 @@
 	[super viewDidDisappear:animated];
 }
 
-/*
- // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
- */
-
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -52,73 +45,62 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return 2;
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)anIndexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+	NSParameterAssert( anIndexPath.length > 1 );
 
-	// Configure the cell.
-    return cell;
+	UITableViewCell		* theCell = nil;
+	static NSString		* kCellIdentifier = @"Cell";
+	NSUInteger			theRowIndex = [anIndexPath indexAtPosition:1];
+
+	theCell = [aTableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+
+	if(theCell == nil )
+		theCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier] autorelease];
+
+	switch( theRowIndex )
+	{
+	case 0:
+		theCell.textLabel.text = @"Standard";
+		break;
+		
+	case 1:
+		theCell.textLabel.text = @"Customised Look";
+		break;
+
+	default:
+		NSAssert(NO, @"Unexpected row: %d", theRowIndex );
+		break;
+	}
+	
+    return theCell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)anIndexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
+	NSParameterAssert( anIndexPath.length > 1 );
+	
+	NSUInteger			theRowIndex = [anIndexPath indexAtPosition:1];
+	UIViewController	* theController = nil;
+	switch( theRowIndex )
+	{
+	case 0:
+		theController = [[StandardViewController alloc] init];
+		break;
+		
+	case 1:
+		break;
+		
+	default:
+		NSAssert(NO, @"Unexpected row: %d", theRowIndex );
+		break;
+	}
+	[self.navigationController pushViewController:theController animated:YES];
+	[theController release];
 }
 
 - (void)didReceiveMemoryWarning

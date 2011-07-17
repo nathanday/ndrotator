@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D806369613CEEC1300D4DA3C /* StandardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D806369213CEEC1300D4DA3C /* StandardViewController.xib */; };
+		D806369713CEEC1300D4DA3C /* StandardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D806369213CEEC1300D4DA3C /* StandardViewController.xib */; };
+		D806369813CEEC1300D4DA3C /* StandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D806369513CEEC1300D4DA3C /* StandardViewController.m */; };
+		D806369913CEEC1300D4DA3C /* StandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D806369513CEEC1300D4DA3C /* StandardViewController.m */; };
 		D898C6F513CE9C0600FE191C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F413CE9C0600FE191C /* UIKit.framework */; };
 		D898C6F713CE9C0600FE191C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F613CE9C0600FE191C /* Foundation.framework */; };
 		D898C6F913CE9C0600FE191C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F813CE9C0600FE191C /* CoreGraphics.framework */; };
@@ -14,7 +18,6 @@
 		D898C70113CE9C0600FE191C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70013CE9C0600FE191C /* main.m */; };
 		D898C70513CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */; };
 		D898C70813CE9C0600FE191C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D898C70613CE9C0600FE191C /* MainWindow.xib */; };
-		D898C70B13CE9C0600FE191C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70A13CE9C0600FE191C /* RootViewController.m */; };
 		D898C70E13CE9C0600FE191C /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D898C70C13CE9C0600FE191C /* RootViewController.xib */; };
 		D898C71613CE9C0600FE191C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C71513CE9C0600FE191C /* SenTestingKit.framework */; };
 		D898C71713CE9C0600FE191C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D898C6F413CE9C0600FE191C /* UIKit.framework */; };
@@ -23,6 +26,15 @@
 		D898C72113CE9C0600FE191C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D898C71F13CE9C0600FE191C /* InfoPlist.strings */; };
 		D898C72313CE9C0600FE191C /* NDRotatingControllerViewTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D898C72213CE9C0600FE191C /* NDRotatingControllerViewTests.h */; };
 		D898C72513CE9C0600FE191C /* NDRotatingControllerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C72413CE9C0600FE191C /* NDRotatingControllerViewTests.m */; };
+		D898C73513CE9CC200FE191C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C73413CE9CC200FE191C /* RootViewController.m */; };
+		D898C74813CE9E3C00FE191C /* NDRotator.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C74413CE9E3C00FE191C /* NDRotator.m */; };
+		D898C74913CE9E3C00FE191C /* NDRotator.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C74413CE9E3C00FE191C /* NDRotator.m */; };
+		D898C74A13CE9E3C00FE191C /* ButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D898C74613CE9E3C00FE191C /* ButtonBackground.png */; };
+		D898C74B13CE9E3C00FE191C /* ButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D898C74613CE9E3C00FE191C /* ButtonBackground.png */; };
+		D898C74C13CE9E3C00FE191C /* SelectedButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */; };
+		D898C74D13CE9E3C00FE191C /* SelectedButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */; };
+		D898C74E13CEE62B00FE191C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C73413CE9CC200FE191C /* RootViewController.m */; };
+		D898C74F13CEE63100FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,26 +48,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D806369313CEEC1300D4DA3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StandardViewController.xib; sourceTree = "<group>"; };
+		D806369413CEEC1300D4DA3C /* StandardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardViewController.h; sourceTree = "<group>"; };
+		D806369513CEEC1300D4DA3C /* StandardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandardViewController.m; sourceTree = "<group>"; };
 		D898C6F013CE9C0600FE191C /* NDRotatingControllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRotatingControllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D898C6F413CE9C0600FE191C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D898C6F613CE9C0600FE191C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D898C6F813CE9C0600FE191C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D898C6FC13CE9C0600FE191C /* NDRotatingControllerView-Info.plist */ = {isa = PBXFileReference; path = "NDRotatingControllerView-Info.plist"; sourceTree = "<group>"; };
+		D898C6FC13CE9C0600FE191C /* NDRotatingControllerView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NDRotatingControllerView-Info.plist"; sourceTree = "<group>"; };
 		D898C6FE13CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D898C70013CE9C0600FE191C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D898C70213CE9C0600FE191C /* NDRotatingControllerView-Prefix.pch */ = {isa = PBXFileReference; path = "NDRotatingControllerView-Prefix.pch"; sourceTree = "<group>"; };
-		D898C70313CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.h */ = {isa = PBXFileReference; path = NDRotatingControllerViewAppDelegate.h; sourceTree = "<group>"; };
+		D898C70213CE9C0600FE191C /* NDRotatingControllerView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NDRotatingControllerView-Prefix.pch"; sourceTree = "<group>"; };
+		D898C70313CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDRotatingControllerViewAppDelegate.h; sourceTree = "<group>"; };
 		D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDRotatingControllerViewAppDelegate.m; sourceTree = "<group>"; };
 		D898C70713CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		D898C70913CE9C0600FE191C /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
-		D898C70A13CE9C0600FE191C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D898C70D13CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		D898C71413CE9C0600FE191C /* NDRotatingControllerViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NDRotatingControllerViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D898C71513CE9C0600FE191C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D898C71E13CE9C0600FE191C /* NDRotatingControllerViewTests-Info.plist */ = {isa = PBXFileReference; path = "NDRotatingControllerViewTests-Info.plist"; sourceTree = "<group>"; };
+		D898C71E13CE9C0600FE191C /* NDRotatingControllerViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NDRotatingControllerViewTests-Info.plist"; sourceTree = "<group>"; };
 		D898C72013CE9C0600FE191C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D898C72213CE9C0600FE191C /* NDRotatingControllerViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDRotatingControllerViewTests.h; sourceTree = "<group>"; };
 		D898C72413CE9C0600FE191C /* NDRotatingControllerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDRotatingControllerViewTests.m; sourceTree = "<group>"; };
+		D898C73313CE9CC200FE191C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		D898C73413CE9CC200FE191C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D898C74313CE9E3C00FE191C /* NDRotator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDRotator.h; sourceTree = "<group>"; };
+		D898C74413CE9E3C00FE191C /* NDRotator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDRotator.m; sourceTree = "<group>"; };
+		D898C74613CE9E3C00FE191C /* ButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBackground.png; sourceTree = "<group>"; };
+		D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectedButtonBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +102,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D806369113CEEC1300D4DA3C /* Standard */ = {
+			isa = PBXGroup;
+			children = (
+				D806369213CEEC1300D4DA3C /* StandardViewController.xib */,
+				D806369413CEEC1300D4DA3C /* StandardViewController.h */,
+				D806369513CEEC1300D4DA3C /* StandardViewController.m */,
+			);
+			path = Standard;
+			sourceTree = "<group>";
+		};
 		D898C6E513CE9C0500FE191C = {
 			isa = PBXGroup;
 			children = (
 				D898C6FA13CE9C0600FE191C /* NDRotatingControllerView */,
+				D898C74213CE9E3C00FE191C /* Classes */,
+				D806369113CEEC1300D4DA3C /* Standard */,
+				D898C74513CE9E3C00FE191C /* Images */,
 				D898C71C13CE9C0600FE191C /* NDRotatingControllerViewTests */,
 				D898C6F313CE9C0600FE191C /* Frameworks */,
 				D898C6F113CE9C0600FE191C /* Products */,
@@ -119,8 +151,8 @@
 				D898C70313CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.h */,
 				D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */,
 				D898C70613CE9C0600FE191C /* MainWindow.xib */,
-				D898C70913CE9C0600FE191C /* RootViewController.h */,
-				D898C70A13CE9C0600FE191C /* RootViewController.m */,
+				D898C73313CE9CC200FE191C /* RootViewController.h */,
+				D898C73413CE9CC200FE191C /* RootViewController.m */,
 				D898C70C13CE9C0600FE191C /* RootViewController.xib */,
 				D898C6FB13CE9C0600FE191C /* Supporting Files */,
 			);
@@ -155,6 +187,24 @@
 				D898C71F13CE9C0600FE191C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D898C74213CE9E3C00FE191C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D898C74313CE9E3C00FE191C /* NDRotator.h */,
+				D898C74413CE9E3C00FE191C /* NDRotator.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D898C74513CE9E3C00FE191C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D898C74613CE9E3C00FE191C /* ButtonBackground.png */,
+				D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +277,9 @@
 				D898C6FF13CE9C0600FE191C /* InfoPlist.strings in Resources */,
 				D898C70813CE9C0600FE191C /* MainWindow.xib in Resources */,
 				D898C70E13CE9C0600FE191C /* RootViewController.xib in Resources */,
+				D898C74A13CE9E3C00FE191C /* ButtonBackground.png in Resources */,
+				D898C74C13CE9E3C00FE191C /* SelectedButtonBackground.png in Resources */,
+				D806369613CEEC1300D4DA3C /* StandardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +289,9 @@
 			files = (
 				D898C72113CE9C0600FE191C /* InfoPlist.strings in Resources */,
 				D898C72313CE9C0600FE191C /* NDRotatingControllerViewTests.h in Resources */,
+				D898C74B13CE9E3C00FE191C /* ButtonBackground.png in Resources */,
+				D898C74D13CE9E3C00FE191C /* SelectedButtonBackground.png in Resources */,
+				D806369713CEEC1300D4DA3C /* StandardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +320,9 @@
 			files = (
 				D898C70113CE9C0600FE191C /* main.m in Sources */,
 				D898C70513CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */,
-				D898C70B13CE9C0600FE191C /* RootViewController.m in Sources */,
+				D898C74813CE9E3C00FE191C /* NDRotator.m in Sources */,
+				D898C74E13CEE62B00FE191C /* RootViewController.m in Sources */,
+				D806369813CEEC1300D4DA3C /* StandardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +331,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D898C72513CE9C0600FE191C /* NDRotatingControllerViewTests.m in Sources */,
+				D898C73513CE9CC200FE191C /* RootViewController.m in Sources */,
+				D898C74913CE9E3C00FE191C /* NDRotator.m in Sources */,
+				D898C74F13CEE63100FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */,
+				D806369913CEEC1300D4DA3C /* StandardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +349,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D806369213CEEC1300D4DA3C /* StandardViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D806369313CEEC1300D4DA3C /* en */,
+			);
+			name = StandardViewController.xib;
+			sourceTree = "<group>";
+		};
 		D898C6FD13CE9C0600FE191C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,6 +440,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NDRotatingControllerView/NDRotatingControllerView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -381,6 +452,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NDRotatingControllerView/NDRotatingControllerView-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NDRotatingControllerView/NDRotatingControllerView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -440,6 +512,7 @@
 				D898C72A13CE9C0600FE191C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D898C72B13CE9C0600FE191C /* Build configuration list for PBXNativeTarget "NDRotatingControllerViewTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +521,7 @@
 				D898C72D13CE9C0600FE191C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
