@@ -28,8 +28,8 @@ static NSString			* const kStyleCodingKey = @"style",
 						* const kMinimumDomainCodingKey = @"minimumDomain",
 						* const kMaximumDomainCodingKey = @"maximumDomain",
 						* const kThumbTintCodingKey = @"thumbTint",
-						* const kContinuousCodingKey = YES,
-						* const kWrapAroundCodingKey = YES;
+						* const kContinuousCodingKey = @"continuous",
+						* const kWrapAroundCodingKey = @"wrapAround";
 
 static NSString			* kRotatorStyleStrs[] = { @"disc", @"rotate", @"linear" };
 static NSString			* kThumbTintStr[] = { @"grey", @"red", @"green", @"blue", @"yellow", @"magenta", @"teal", @"orange", @"pink", @"lime", @"spring green", @"purple", @"aqua", @"black" };

@@ -47,7 +47,7 @@ enum NDRotatorStyle
 
 /*!
  @enum NDThumbTint
- @abstract Constants used to change the thumb tint, this can be used to make the thumb clearer for smaller rotator controls..
+ @abstract Constants used to change the thumb tint, this can be used to make the thumb clearer for smaller rotator controls.
  */
 enum NDThumbTint
 {
@@ -138,6 +138,9 @@ enum NDThumbTint
 /*!
 	@property wrapAround
 	@abstract Contains the boolean used to determine how the rotator behaves when the user reaches minimumDomain or maximumDomain.
+	@discussion If wrapAround is YES then when the angular value reaches minimumDomain the angular value continues by wrapping the value up to maximumDomain, and similarly when the angular value reaches maximumDomain the angular value continues by wrapping the value down to minimumDomain. If NO then the rotator will simple stop when the minimumDomain or maximumDomain is reached. If wrapAround is YES and the difference between minimumDomain and maximumDomain is not exactly a multiple 2π then an undesired jump may occur.
+ 
+	The default value of this property is YES.
  */
 @property			BOOL						wrapAround;
 /*!
@@ -150,11 +153,12 @@ enum NDThumbTint
 @property(nonatomic, getter=isContinuous) BOOL	continuous;
 /*!
 	@property thumbTint
+	@abstract Contains the value used to set the color of the thumb.
  */
 @property(nonatomic)		enum NDThumbTint	thumbTint;
 
 /*!
-	@methodgroup methods and properties to override to change look
+	@methodgroup methods and properties to override to change, these methods are not yet finalized.
  */
 
 @property(readonly) CGRect		controlRect;
