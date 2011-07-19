@@ -1,0 +1,1 @@
+This is an initial release and still requires documentation. I also want to make it easier for people to override the methods for drawing the control elements so that developers can use it to create rotary controls of there own.
