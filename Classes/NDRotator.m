@@ -9,14 +9,16 @@
 #import "NDRotator.h"
 
 
-enum NDRotatorStyle		kDefaultStyle = NDRotatorStyleDisc;
-CGFloat					kDefaultRadius = 1.0,
-						kDefaultLinearSensitivity = 0.05,
-						kDefaultMinimumValue = 0.0,
-						kDefaultMaximumValue = 100.0,
-						kDefaultMinimumDomain = 0,
-						kDefaultMaximumDomain = 2.0*M_PI;
-enum NDThumbTint		kDefaultThumbTint = NDThumbTintLime;
+static enum NDRotatorStyle		kDefaultStyle = NDRotatorStyleDisc;
+static const CGFloat			kDefaultRadius = 1.0,
+								kDefaultLinearSensitivity = 0.05,
+								kDefaultMinimumValue = 0.0,
+								kDefaultMaximumValue = 1.0,
+								kDefaultMinimumDomain = 0,
+								kDefaultMaximumDomain = 2.0*M_PI;
+static enum NDThumbTint			kDefaultThumbTint = NDThumbTintLime;
+static const BOOL				kDefaultContinuousValue = YES,
+								kDefaultWrapAroundValue = YES;
 
 static NSString			* const kStyleCodingKey = @"style",
 						* const kRadiusCodingKey = @"radius",
@@ -25,7 +27,9 @@ static NSString			* const kStyleCodingKey = @"style",
 						* const kMaximumValueCodingKey = @"maximumValue",
 						* const kMinimumDomainCodingKey = @"minimumDomain",
 						* const kMaximumDomainCodingKey = @"maximumDomain",
-						* const kThumbTintCodingKey = @"thumbTint";
+						* const kThumbTintCodingKey = @"thumbTint",
+						* const kContinuousCodingKey = YES,
+						* const kWrapAroundCodingKey = YES;
 
 static NSString			* kRotatorStyleStrs[] = { @"disc", @"rotate", @"linear" };
 static NSString			* kThumbTintStr[] = { @"grey", @"red", @"green", @"blue", @"yellow", @"magenta", @"teal", @"orange", @"pink", @"lime", @"spring green", @"purple", @"aqua", @"black" };
@@ -288,6 +292,8 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 		self.minimumDomain = kDefaultMinimumDomain;
 		self.maximumDomain = kDefaultMaximumDomain;
 		self.thumbTint = kDefaultThumbTint;
+		self.continuous = kDefaultContinuousValue;
+		self.wrapAround = kDefaultWrapAroundValue;
 	}
     
     return self;
@@ -362,6 +368,11 @@ static CGFloat decodeDoubleWithDefault( NSCoder * aCoder, NSString * aKey, CGFlo
 	NSNumber		* theValue = [aCoder decodeObjectForKey:aKey];
 	return theValue != nil ? theValue.doubleValue : aDefault;
 }
+static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aDefault )
+{
+	NSNumber		* theValue = [aCoder decodeObjectForKey:aKey];
+	return theValue != nil ? theValue.boolValue : aDefault;
+}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if( (self = [super initWithCoder:aDecoder]) != nil )
@@ -376,6 +387,8 @@ static CGFloat decodeDoubleWithDefault( NSCoder * aCoder, NSString * aKey, CGFlo
 			self.minimumDomain = decodeDoubleWithDefault( aDecoder, kMinimumDomainCodingKey, kDefaultMinimumDomain );
 			self.maximumDomain = decodeDoubleWithDefault( aDecoder, kMaximumDomainCodingKey, kDefaultMaximumDomain );
 			self.thumbTint = integerValueForString([aDecoder decodeObjectForKey:kThumbTintCodingKey], kThumbTintStr, sizeof(kThumbTintStr)/sizeof(*kThumbTintStr), kDefaultThumbTint );
+			self.continuous = decodeBooleanWithDefault( aDecoder, kContinuousCodingKey, kDefaultContinuousValue );
+			self.wrapAround = decodeBooleanWithDefault( aDecoder, kWrapAroundCodingKey, kDefaultWrapAroundValue );
 		}
 		else
 		{
@@ -387,6 +400,8 @@ static CGFloat decodeDoubleWithDefault( NSCoder * aCoder, NSString * aKey, CGFlo
 			self.minimumDomain = [[aDecoder decodeObject] doubleValue];
 			self.maximumDomain = [[aDecoder decodeObject] doubleValue];
 			self.thumbTint = integerValueForString([aDecoder decodeObject], kThumbTintStr, sizeof(kThumbTintStr)/sizeof(*kThumbTintStr), kDefaultThumbTint );
+			self.continuous = [[aDecoder decodeObject] boolValue];
+			self.wrapAround = [[aDecoder decodeObject] boolValue];
 		}
     }
     
@@ -405,6 +420,8 @@ static CGFloat decodeDoubleWithDefault( NSCoder * aCoder, NSString * aKey, CGFlo
 		[anEncoder encodeDouble:self.minimumDomain forKey:kMinimumDomainCodingKey];
 		[anEncoder encodeDouble:self.maximumDomain forKey:kMaximumDomainCodingKey];
 		[anEncoder encodeObject:stringForInteger(self.thumbTint, kThumbTintStr, sizeof(kThumbTintStr)/sizeof(*kThumbTintStr)) forKey:kThumbTintCodingKey];
+		[anEncoder encodeBool:self.continuous forKey:kDefaultContinuousValue];
+		[anEncoder encodeBool:self.wrapAround forKey:kDefaultWrapAroundValue];
 	}
 	else
 	{
@@ -416,6 +433,8 @@ static CGFloat decodeDoubleWithDefault( NSCoder * aCoder, NSString * aKey, CGFlo
 		[anEncoder encodeObject:[NSNumber numberWithDouble:self.minimumDomain]];
 		[anEncoder encodeObject:[NSNumber numberWithDouble:self.maximumDomain]];
 		[anEncoder encodeObject:stringForInteger(self.thumbTint, kThumbTintStr, sizeof(kThumbTintStr)/sizeof(*kThumbTintStr))];
+		[anEncoder encodeObject:[NSNumber numberWithBool:self.continuous]];
+		[anEncoder encodeObject:[NSNumber numberWithBool:self.wrapAround]];
 	}
 }
 
