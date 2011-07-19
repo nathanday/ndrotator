@@ -126,8 +126,9 @@ static void componentsForTint( CGFloat * comp, CGFloat v, enum NDThumbTint t )
 	}
 }
 
+static inline double mathMod(double x, double y) { return x - y * floor(x / y); }
 static CGFloat constrainValue( CGFloat v, CGFloat min, CGFloat max ) { return v < min ? min : (v > max ? max : v); }
-static CGFloat wrapValue( CGFloat v, CGFloat min, CGFloat max ) { return v < min ? max - (min-v) : (v > max ? min + (v-max) : v); }
+static CGFloat wrapValue( CGFloat v, CGFloat min, CGFloat max ) { return mathMod(v-min,max-min)+min; }
 static CGFloat mapValue( CGFloat v, CGFloat minV, CGFloat maxV, CGFloat minR, CGFloat maxR ) { return ((v-minV)/(maxV-minV)) * (maxR - minR) + minR; }
 static CGPoint constrainPoint( const CGPoint v, const CGRect m )
 {
