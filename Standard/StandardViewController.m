@@ -187,7 +187,7 @@ static NSString		* const kThumbTintStr[] = { @"grey", @"red", @"green", @"blue",
 	[self.xTextView setNeedsDisplay];
 	self.yTextView.text = [NSString stringWithFormat:@"%.2f", self.rotatorView.cartesianPoint.y];
 	[self.yTextView setNeedsDisplay];
-	self.valueTextView.text = [NSString stringWithFormat:@"%.1f", self.rotatorView.value];
+	self.valueTextView.text = [NSString stringWithFormat:@"%.2f", self.rotatorView.value];
 	[self.valueTextView setNeedsDisplay];
 }
 #pragma mark -
@@ -228,7 +228,7 @@ static NSString		* const kThumbTintStr[] = { @"grey", @"red", @"green", @"blue",
 	[self.xTextView setNeedsDisplay];
 	self.yTextView.text = [NSString stringWithFormat:@"%.2f", self.rotatorView.cartesianPoint.y];
 	[self.yTextView setNeedsDisplay];
-	self.valueTextView.text = [NSString stringWithFormat:@"%.1f", self.rotatorView.value];
+	self.valueTextView.text = [NSString stringWithFormat:@"%.2f", self.rotatorView.value];
 	[self.valueTextView setNeedsDisplay];
 	switch( self.rotatorView.style )
 	{

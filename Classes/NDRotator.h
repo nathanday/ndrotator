@@ -98,36 +98,49 @@ enum NDThumbTint
 /*!
 	@property minimumDomain
 	@abstract Contains the minimum angle of the receiver.
+	@discussion 
+
+	The default value of this property is 0.0.
  */
 @property(assign)	CGFloat						minimumDomain;
 /*!
 	@property maximumDomain
 	@abstract Contains the maximum angle of the receiver.
- */
+	@discussion 
+
+	The default value of this property is 2.0π.
+*/
 @property(assign)	CGFloat						maximumDomain;
 /*!
 	@property linearSensitivity
-	@abstract Contains the value used to determin how vertical movement is mapped to angular movement of the control when the style is NDRotatorStyleLinear. 
+	@abstract Contains the value used to determin how vertical movement is mapped to angular movement of the control when the style is NDRotatorStyleLinear.
+	@discussion The angle is propertional to y-value * linearSensitivity.
+
+	The default value of this property is 0.05.
  */
 @property(assign)	CGFloat						linearSensitivity;
 /*!
 	@property angle
-	@abstract Contains the angel of the receiver in radians.
+	@abstract Contains the angle of the receiver in radians.
+	@discussion This value will be constrained by the values (minimumDomain,maximumDomain) and so can represent a range of values greater than one turn.
  */
 @property(assign,nonatomic)	CGFloat				angle;
 /*!
 	@property radius
 	@abstract Contains the radial value of the receiver where 0.0 puts the thumb at the center and 1.0 puts the thumb at margin.
+	@discussion The values can be greater than 1.0, to reflect user movements outside of the control.
  */
 @property(assign,nonatomic)	CGFloat				radius;
 /*!
 	@property cartesianPoint
 	@abstract Contains the thumb point where (0.0,0.0) is the center, (1.0,0.0) is at 3 oclock and (0.0,-1.0) is at 12 oclock etc.
- */
+	@discussion The point can go beyound the bounds (-1.0,-1.0) and (1.0,1.0) for radius values greated the 1.0.
+  */
 @property(assign)	CGPoint						cartesianPoint;
 /*!
 	@property constrainedCartesianPoint
 	@abstract Contains the thumb point where (0.0,0.0) is the center, (1.0,0.0) is at 3 oclock and (0.0,-1.0) is at 12 oclock etc. Constrained to a raius of 1.0.
+	@discussion Ths value is similar to cartesianPoint give a radius constrained to (0.0,1.0).
  */
 @property(readonly)	CGPoint						constrainedCartesianPoint;
 /*!
@@ -154,11 +167,14 @@ enum NDThumbTint
 /*!
 	@property thumbTint
 	@abstract Contains the value used to set the color of the thumb.
+	@discussion
+
+	The default value of the property is NDThumbTintGrey.
  */
 @property(nonatomic)		enum NDThumbTint	thumbTint;
 
 /*!
-	@methodgroup methods and properties to override to change, these methods are not yet finalized.
+	@methodgroup methods and properties to override to change the apperance of a NDRotator, these methods are not yet finalized.
  */
 
 @property(readonly) CGRect		controlRect;

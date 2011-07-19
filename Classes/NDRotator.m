@@ -14,7 +14,7 @@ static const CGFloat			kDefaultRadius = 1.0,
 								kDefaultLinearSensitivity = 0.05,
 								kDefaultMinimumValue = 0.0,
 								kDefaultMaximumValue = 1.0,
-								kDefaultMinimumDomain = 0,
+								kDefaultMinimumDomain = 0.0*M_PI,
 								kDefaultMaximumDomain = 2.0*M_PI;
 static enum NDThumbTint			kDefaultThumbTint = NDThumbTintLime;
 static const BOOL				kDefaultContinuousValue = YES,
@@ -176,7 +176,7 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 @interface NDRotator ()
 {
 @private
-	CGFloat			touchDownAngel,
+	CGFloat			touchDownAngle,
 					touchDownYLocation;
 	UIImage			* cachedDiscImage,
 					* cachedHilightedDiscImage,
@@ -184,7 +184,7 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 					* cachedHilightedThumbImage;
 }
 @property(assign) CGPoint		location;
-@property(assign) CGFloat		touchDownAngel,
+@property(assign) CGFloat		touchDownAngle,
 								touchDownYLocation;
 @property(readonly) UIImage		* cachedDiscImage,
 								* cachedHilightedDiscImage,
@@ -420,8 +420,8 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 		[anEncoder encodeDouble:self.minimumDomain forKey:kMinimumDomainCodingKey];
 		[anEncoder encodeDouble:self.maximumDomain forKey:kMaximumDomainCodingKey];
 		[anEncoder encodeObject:stringForInteger(self.thumbTint, kThumbTintStr, sizeof(kThumbTintStr)/sizeof(*kThumbTintStr)) forKey:kThumbTintCodingKey];
-		[anEncoder encodeBool:self.continuous forKey:kDefaultContinuousValue];
-		[anEncoder encodeBool:self.wrapAround forKey:kDefaultWrapAroundValue];
+		[anEncoder encodeBool:self.continuous forKey:kContinuousCodingKey];
+		[anEncoder encodeBool:self.wrapAround forKey:kWrapAroundCodingKey];
 	}
 	else
 	{
@@ -447,7 +447,7 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 {
 	CGPoint			thePoint = [aTouch locationInView:self];
 	self.touchDownYLocation = thePoint.y;
-	self.touchDownAngel = self.angle;
+	self.touchDownAngle = self.angle;
 	self.location = thePoint;
 	if( self.isContinuous )
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -651,7 +651,7 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 #pragma mark -
 #pragma mark Private
 
-@synthesize 	touchDownAngel,
+@synthesize 	touchDownAngle,
 				touchDownYLocation;
 
 - (CGPoint)location
@@ -670,7 +670,7 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 	}
 	else
 	{
-		self.angle = self.touchDownAngel - (aPoint.y - self.touchDownYLocation) * self.linearSensitivity;
+		self.angle = self.touchDownAngle - (aPoint.y - self.touchDownYLocation) * self.linearSensitivity;
 		self.radius = 1.0;
 	}
 }
