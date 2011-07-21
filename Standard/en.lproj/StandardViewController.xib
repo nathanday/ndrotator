@@ -539,7 +539,7 @@
 					<object class="IBUIView" id="667867874">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{85, 172}, {150, 150}}</string>
+						<string key="NSFrame">{{80, 164}, {160, 160}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="135776674"/>
@@ -562,9 +562,9 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<float key="IBUIValue">150</float>
-						<float key="IBUIMinValue">25</float>
-						<float key="IBUIMaxValue">150</float>
+						<float key="IBUIValue">160</float>
+						<float key="IBUIMinValue">35</float>
+						<float key="IBUIMaxValue">160</float>
 					</object>
 					<object class="IBUITextField" id="454974673">
 						<reference key="NSNextResponder" ref="774585933"/>

@@ -9,16 +9,16 @@
 #import "NDRotator.h"
 
 
-static enum NDRotatorStyle		kDefaultStyle = NDRotatorStyleDisc;
-static const CGFloat			kDefaultRadius = 1.0,
-								kDefaultLinearSensitivity = 0.05,
-								kDefaultMinimumValue = 0.0,
-								kDefaultMaximumValue = 1.0,
-								kDefaultMinimumDomain = 0.0*M_PI,
-								kDefaultMaximumDomain = 2.0*M_PI;
-static enum NDThumbTint			kDefaultThumbTint = NDThumbTintLime;
-static const BOOL				kDefaultContinuousValue = YES,
-								kDefaultWrapAroundValue = YES;
+static enum NDRotatorStyle	kDefaultStyle = NDRotatorStyleDisc;
+static const CGFloat		kDefaultRadius = 1.0,
+							kDefaultLinearSensitivity = 0.05,
+							kDefaultMinimumValue = 0.0,
+							kDefaultMaximumValue = 1.0,
+							kDefaultMinimumDomain = 0.0*M_PI,
+							kDefaultMaximumDomain = 2.0*M_PI;
+static enum NDThumbTint		kDefaultThumbTint = NDThumbTintLime;
+static const BOOL			kDefaultContinuousValue = YES,
+							kDefaultWrapAroundValue = YES;
 
 static NSString			* const kStyleCodingKey = @"style",
 						* const kRadiusCodingKey = @"radius",
@@ -126,7 +126,6 @@ static void componentsForTint( CGFloat * comp, CGFloat v, enum NDThumbTint t )
 	}
 }
 
-//static inline CGFloat mathMod(CGFloat x, CGFloat y) { return x - y * floor(x / y); }
 static inline CGFloat mathMod(CGFloat x, CGFloat y) { CGFloat r = fmodf(x,y); return r < 0.0 ? r + y : r; }
 static CGFloat constrainValue( CGFloat v, CGFloat min, CGFloat max ) { return v < min ? min : (v > max ? max : v); }
 static CGFloat wrapValue( CGFloat v, CGFloat min, CGFloat max ) { return mathMod(v-min,max-min)+min; }
@@ -139,13 +138,12 @@ static CGPoint mapPoint( const CGPoint v, const CGRect rangeV, const CGRect rang
 {
 	return CGPointMake(
 			mapValue( v.x, CGRectGetMinX(rangeV), CGRectGetMaxX(rangeV), CGRectGetMinX(rangeR), CGRectGetMaxX(rangeR)),
-			mapValue( v.y, CGRectGetMinY(rangeV), CGRectGetMaxY(rangeV), CGRectGetMinY(rangeR), CGRectGetMaxY(rangeR))
-								);
+			mapValue( v.y, CGRectGetMinY(rangeV), CGRectGetMaxY(rangeV), CGRectGetMinY(rangeR), CGRectGetMaxY(rangeR)));
 }
 
-static CGRect shrinkRect( const CGRect v, CGFloat i )
+static CGRect shrinkRect( const CGRect v, CGSize s )
 {
-	return CGRectMake( CGRectGetMinX(v)+i, CGRectGetMinY(v)+i, CGRectGetWidth(v)-2.0*i, CGRectGetHeight(v)-2.0*i );
+	return CGRectMake( CGRectGetMinX(v)+s.width, CGRectGetMinY(v)+s.height, CGRectGetWidth(v)-2.0*s.width, CGRectGetHeight(v)-2.0*s.height );
 }
 
 static CGRect largestSquareWithinRect( const CGRect r )
@@ -241,17 +239,13 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 	self.radius = sqrt( aPoint.x*aPoint.x + aPoint.y*aPoint.y );
 }
 
-
-- (CGFloat)value
-{
-	return mapValue(self.angle, self.minimumDomain, self.maximumDomain, self.minimumValue, self.maximumValue );
-}
+- (CGFloat)value { return mapValue(self.angle, self.minimumDomain, self.maximumDomain, self.minimumValue, self.maximumValue ); }
 
 - (void)setValue:(CGFloat)aValue
 {
 	CGFloat			theMinium = self.minimumValue,
 					theMaximum = self.maximumValue;
-	
+
 	switch( self.style )
 	{
 	case NDRotatorStyleDisc:
@@ -274,17 +268,14 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 - (void)setThumbTint:(enum NDThumbTint)aThumbTint
 {
 	thumbTint = aThumbTint;
-	[cachedThumbImage release];
-	cachedThumbImage = nil;
-	[cachedHilightedThumbImage release];
-	cachedHilightedThumbImage = nil;
+	[self deleteThumbCache];
 }
 
 #pragma mark -
-#pragma mark creation destruction
+#pragma mark creation and destruction
 - (id)initWithFrame:(CGRect)aFrame
 {
-    if( (self = [super initWithFrame:aFrame]) != nil )
+	if( (self = [super initWithFrame:aFrame]) != nil )
 	{
 		self.style = kDefaultStyle;
 		self.radius = kDefaultRadius;
@@ -297,8 +288,8 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 		self.continuous = kDefaultContinuousValue;
 		self.wrapAround = kDefaultWrapAroundValue;
 	}
-    
-    return self;
+
+	return self;
 }
 
 - (void)dealloc
@@ -307,7 +298,7 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 	[cachedHilightedDiscImage release];
 	[cachedThumbImage release];
 	[cachedHilightedThumbImage release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (NSString *)description
@@ -377,7 +368,7 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if( (self = [super initWithCoder:aDecoder]) != nil )
+	if( (self = [super initWithCoder:aDecoder]) != nil )
 	{
 		if( aDecoder.allowsKeyedCoding )
 		{
@@ -405,9 +396,9 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 			self.continuous = [[aDecoder decodeObject] boolValue];
 			self.wrapAround = [[aDecoder decodeObject] boolValue];
 		}
-    }
-    
-    return self;
+	}
+
+	return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)anEncoder
@@ -473,37 +464,22 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 	[self setNeedsDisplay];
 }
 
-- (void)cancelTrackingWithEvent:(UIEvent *)anEvent
-{
-	[self setNeedsDisplay];
-}
+- (void)cancelTrackingWithEvent:(UIEvent *)anEvent { [self setNeedsDisplay]; }
 
 #pragma mark -
 #pragma mark UIView
 
 - (void)setFrame:(CGRect)aRect
 {
-	[cachedDiscImage release];			// force it to be recreated for new size
-	cachedDiscImage = nil;
-	[cachedHilightedDiscImage release];
-	cachedHilightedDiscImage = nil;
-	[cachedThumbImage release];			// force it to be recreated for new size
-	cachedThumbImage = nil;
-	[cachedHilightedThumbImage release];
-	cachedHilightedThumbImage = nil;
+	[self deleteThumbCache];
+	[self deleteDiscCache];
 	[super setFrame:aRect];
 }
 
 - (void)setBounds:(CGRect)aRect
 {
-	[cachedDiscImage release];			// force it to be recreated for new size
-	cachedDiscImage = nil;
-	[cachedHilightedDiscImage release];
-	cachedHilightedDiscImage = nil;
-	[cachedThumbImage release];			// force it to be recreated for new size
-	cachedThumbImage = nil;
-	[cachedHilightedThumbImage release];
-	cachedHilightedThumbImage = nil;
+	[self deleteThumbCache];
+	[self deleteDiscCache];
 	[super setBounds:aRect];
 }
 
@@ -535,7 +511,25 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 		[[self cachedThumbImage] drawInRect:theThumbRect];
 	else
 		[[self cachedHilightedThumbImage] drawInRect:theThumbRect];
-	//	[self drawThumbInRect:theThumbRect];
+}
+
+#pragma mark -
+#pragma mark  methods and properties to call when subclassing <NDRotator>.
+
+- (void)deleteThumbCache
+{
+	[cachedThumbImage release];			// force it to be recreated for new size
+	cachedThumbImage = nil;
+	[cachedHilightedThumbImage release];
+	cachedHilightedThumbImage = nil;
+}
+
+- (void)deleteDiscCache
+{
+	[cachedDiscImage release];			// force it to be recreated for new size
+	cachedDiscImage = nil;
+	[cachedHilightedDiscImage release];
+	cachedHilightedDiscImage = nil;
 }
 
 #pragma mark -
@@ -544,11 +538,12 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 - (CGRect)controlRect
 {
 	CGRect		theResult = self.bounds;
-	theResult.size.height = floorf(theResult.size.height * 0.94);
-	theResult.size.width = floorf(theResult.size.width * 0.92);
-	theResult.origin.y += ceilf(theResult.size.height * 0.01);
-	theResult.origin.x += ceilf(theResult.size.width * 0.01);
-	theResult = shrinkRect(theResult, 1.0);
+	CGRect		theBounds = theResult;
+	theResult.size.height = floorf( CGRectGetHeight(theResult) * 0.95);
+	theResult.size.width = floorf( CGRectGetWidth(theResult) * 0.95);
+	theResult.origin.y += ceilf( CGRectGetHeight(theResult) * 0.01);
+	theResult.origin.x += ceilf( ( CGRectGetWidth(theBounds) - CGRectGetWidth(theResult)) * 0.5);
+	theResult = shrinkRect(theResult, CGSizeMake(1.0,1.0));
 	return largestSquareWithinRect(theResult);
 }
 
@@ -562,19 +557,29 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 	if( theThumbDiam > theBoundsSize * 0.5 )
 		theThumbDiam = theBoundsSize * 0.5;
 
-	
+
 	CGFloat			theThumbRadius = theThumbDiam/2.0;
 	CGRect			theThumbBounds = CGRectMake( -theThumbRadius, -theThumbRadius, theThumbDiam, theThumbDiam );
-	return shrinkRect(theThumbBounds, -1.0 );
+	return shrinkRect(theThumbBounds, CGSizeMake(-1.0,-1.0) );
 }
 
-static CGGradientRef discGradient( CGColorSpaceRef aColorSpace )
+static CGGradientRef shadowDiscGradient( CGColorSpaceRef aColorSpace )
 {
 	CGFloat			theLocations[] = { 0.0, 0.3, 0.6, 1.0 };
 	CGFloat			theComponents[sizeof(theLocations)/sizeof(*theLocations)*4] = { 0.0, 0.0, 0.0, 0.25,  // 0
 																					0.0, 0.0, 0.0, 0.125, // 1
 																					0.0, 0.0, 0.0, 0.0225, // 1
 																					0.0, 0.0, 0.0, 0.0 }; // 2
+	return CGGradientCreateWithColorComponents( aColorSpace, theComponents, theLocations, sizeof(theLocations)/sizeof(*theLocations) );
+}
+
+static CGGradientRef hilightDiscGradient( CGColorSpaceRef aColorSpace )
+{
+	CGFloat			theLocations[] = { 0.0, 0.3, 0.6, 1.0 };
+	CGFloat			theComponents[sizeof(theLocations)/sizeof(*theLocations)*4] = { 1.0, 1.0, 1.0, 0.0225,  // 0
+																					1.0, 1.0, 1.0, 0.33, // 1
+																					1.0, 1.0, 1.0, 0.0225, // 1
+																					1.0, 1.0, 1.0, 0.0 }; // 2
 	return CGGradientCreateWithColorComponents( aColorSpace, theComponents, theLocations, sizeof(theLocations)/sizeof(*theLocations) );
 }
 
@@ -586,7 +591,8 @@ static CGGradientRef discGradient( CGColorSpaceRef aColorSpace )
 	CGFloat			theStartRadius = CGRectGetHeight( aRect )*0.50,
 					theEndRadius = theStartRadius * 0.85;
 	CGPoint			theStartCenter = CGPointMake( CGRectGetMidX(aRect), CGRectGetMidY(aRect) ),
-					theEndCenter = CGPointMake(theStartCenter.x, theStartCenter.y-0.1*theStartRadius );
+					theShadowEndCenter = CGPointMake(theStartCenter.x, theStartCenter.y-0.05*theStartRadius ),
+					theHilightEndCenter = CGPointMake(theStartCenter.x, theStartCenter.y+0.1*theStartRadius );
 	CGColorSpaceRef	theColorSpace = CGColorGetColorSpace(self.backgroundColor.CGColor);
 	CGFloat			theDiscShadowColorComponents[] = { 0.0, 0.0, 0.0, 0.2 };
 
@@ -599,14 +605,15 @@ static CGGradientRef discGradient( CGColorSpaceRef aColorSpace )
 	CGContextRef	theBaseContext = UIGraphicsGetCurrentContext();
 	CGContextSaveGState( theBaseContext );
 	CGContextSetShadowWithColor( theBaseContext, CGSizeMake(0.0, theStartRadius*0.05), 2.0, CGColorCreate( theColorSpace, theDiscShadowColorComponents ) );
-	CGContextFillEllipseInRect( theBaseContext, aRect );	
+	CGContextFillEllipseInRect( theBaseContext, aRect );
 	CGContextRestoreGState( theBaseContext );
 
-	CGContextDrawRadialGradient( theContext, discGradient(theColorSpace), theStartCenter, theStartRadius, theEndCenter, theEndRadius, 0.0 );
+	CGContextDrawRadialGradient( theContext, hilightDiscGradient(theColorSpace), theStartCenter, theStartRadius, theHilightEndCenter, theEndRadius, 0.0 );
+	CGContextDrawRadialGradient( theContext, shadowDiscGradient(theColorSpace), theStartCenter, theStartRadius, theShadowEndCenter, theEndRadius, 0.0 );
 
 	CGContextSetAllowsAntialiasing( theContext, YES );
 	CGContextSetRGBStrokeColor( theContext, 0.5, 0.5, 0.5, 1.0 );
-	CGContextStrokeEllipseInRect( theContext, aRect );	
+	CGContextStrokeEllipseInRect( theContext, aRect );
 
 	CGContextRestoreGState( theContext );
 	return YES;
@@ -658,17 +665,18 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 
 - (CGPoint)location
 {
-	CGRect			theBounds = self.controlRect;
-	CGFloat			theThumbDiam = CGRectGetWidth(self.thumbRect);
-	return mapPoint( self.constrainedCartesianPoint, CGRectMake(-1.0, -1.0, 2.0, 2.0), shrinkRect(theBounds, theThumbDiam*0.68 ) );
+	CGRect			theBounds = self.controlRect,
+					theThumbRect = self.thumbRect;
+	return mapPoint( self.constrainedCartesianPoint, CGRectMake(-1.0, -1.0, 2.0, 2.0), shrinkRect(theBounds, CGSizeMake(CGRectGetWidth(theThumbRect)*0.68,CGRectGetHeight(theThumbRect)*0.68) ) );
 }
 
 - (void)setLocation:(CGPoint)aPoint
 {
 	if( self.style != NDRotatorStyleLinear )
 	{
-		CGRect		theBounds = self.controlRect;
-		self.cartesianPoint = mapPoint(aPoint, shrinkRect(theBounds, CGRectGetWidth(self.thumbRect)*0.68 ), CGRectMake(-1.0, -1.0, 2.0, 2.0 ) );
+		CGRect		theBounds = self.controlRect,
+					theThumbRect = self.thumbRect;
+		self.cartesianPoint = mapPoint(aPoint, shrinkRect(theBounds, CGSizeMake(CGRectGetWidth(theThumbRect)*0.68,CGRectGetHeight(theThumbRect)*0.68) ), CGRectMake(-1.0, -1.0, 2.0, 2.0 ) );
 	}
 	else
 	{
