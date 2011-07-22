@@ -12,14 +12,14 @@
 @interface StandardViewController : UIViewController <UITextFieldDelegate>
 {
 @private
-	UITextField		* minimumDomainTextView;
-	UITextField		* maximumDomainTextView;
-	UITextField		* minimumRangeTextView;
-	UITextField		* maximumRangeTextView;
+	UITextField			* minimumDomainTextView;
+	UITextField			* maximumDomainTextView;
+	UITextField			* minimumRangeTextView;
+	UITextField			* maximumRangeTextView;
 	UISegmentedControl	* styleControl;
-	UIButton		* wrapConstrainButton;
-	UIButton		* continuousButton;
-	UIButton *nextThumbTintButton;
+	UIButton			* wrapConstrainButton;
+	UIButton			* continuousButton;
+	UIButton			* nextThumbTintButton;
 	
 	NDRotator		* rotatorView;
 

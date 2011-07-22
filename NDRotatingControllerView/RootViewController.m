@@ -15,6 +15,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	self.title = @"Menu";
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -35,6 +35,8 @@
 		D898C74D13CE9E3C00FE191C /* SelectedButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */; };
 		D898C74E13CEE62B00FE191C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C73413CE9CC200FE191C /* RootViewController.m */; };
 		D898C74F13CEE63100FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D898C70413CE9C0600FE191C /* NDRotatingControllerViewAppDelegate.m */; };
+		D8C0240713D98C4500DDD4C1 /* NDRevealView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C0240613D98C4500DDD4C1 /* NDRevealView.m */; };
+		D8C0240813D98C4500DDD4C1 /* NDRevealView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C0240613D98C4500DDD4C1 /* NDRevealView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		D898C74413CE9E3C00FE191C /* NDRotator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDRotator.m; sourceTree = "<group>"; };
 		D898C74613CE9E3C00FE191C /* ButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBackground.png; sourceTree = "<group>"; };
 		D898C74713CE9E3C00FE191C /* SelectedButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelectedButtonBackground.png; sourceTree = "<group>"; };
+		D8C0240513D98C4500DDD4C1 /* NDRevealView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDRevealView.h; sourceTree = "<group>"; };
+		D8C0240613D98C4500DDD4C1 /* NDRevealView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDRevealView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 		D898C74213CE9E3C00FE191C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D8C0240513D98C4500DDD4C1 /* NDRevealView.h */,
+				D8C0240613D98C4500DDD4C1 /* NDRevealView.m */,
 				D898C74313CE9E3C00FE191C /* NDRotator.h */,
 				D898C74413CE9E3C00FE191C /* NDRotator.m */,
 			);
@@ -323,6 +329,7 @@
 				D898C74813CE9E3C00FE191C /* NDRotator.m in Sources */,
 				D898C74E13CEE62B00FE191C /* RootViewController.m in Sources */,
 				D806369813CEEC1300D4DA3C /* StandardViewController.m in Sources */,
+				D8C0240713D98C4500DDD4C1 /* NDRevealView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +342,7 @@
 				D898C74913CE9E3C00FE191C /* NDRotator.m in Sources */,
 				D898C74F13CEE63100FE191C /* NDRotatingControllerViewAppDelegate.m in Sources */,
 				D806369913CEEC1300D4DA3C /* StandardViewController.m in Sources */,
+				D8C0240813D98C4500DDD4C1 /* NDRevealView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

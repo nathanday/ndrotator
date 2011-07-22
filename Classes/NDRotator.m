@@ -178,16 +178,16 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 @private
 	CGFloat			touchDownAngle,
 					touchDownYLocation;
-	UIImage			* cachedDiscImage,
-					* cachedHilightedDiscImage,
+	UIImage			* cachedBodyImage,
+					* cachedHilightedBodyImage,
 					* cachedThumbImage,
 					* cachedHilightedThumbImage;
 }
 @property(assign) CGPoint		location;
 @property(assign) CGFloat		touchDownAngle,
 								touchDownYLocation;
-@property(readonly) UIImage		* cachedDiscImage,
-								* cachedHilightedDiscImage,
+@property(readonly) UIImage		* cachedBodyImage,
+								* cachedHilightedBodyImage,
 								* cachedThumbImage,
 								* cachedHilightedThumbImage;
 
@@ -294,8 +294,8 @@ static CGFloat meanFloat( const CGFloat * f, NSUInteger c )
 
 - (void)dealloc
 {
-	[cachedDiscImage release];
-	[cachedHilightedDiscImage release];
+	[cachedBodyImage release];
+	[cachedHilightedBodyImage release];
 	[cachedThumbImage release];
 	[cachedHilightedThumbImage release];
 	[super dealloc];
@@ -472,14 +472,14 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 - (void)setFrame:(CGRect)aRect
 {
 	[self deleteThumbCache];
-	[self deleteDiscCache];
+	[self deleteBodyCache];
 	[super setFrame:aRect];
 }
 
 - (void)setBounds:(CGRect)aRect
 {
 	[self deleteThumbCache];
-	[self deleteDiscCache];
+	[self deleteBodyCache];
 	[super setBounds:aRect];
 }
 
@@ -499,18 +499,18 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 	}
 
 	if( self.state & UIControlStateHighlighted )
-		[[self cachedDiscImage] drawInRect:self.bounds];
+		[self.cachedBodyImage drawInRect:self.bounds];
 	else
-		[[self cachedHilightedDiscImage] drawInRect:self.bounds];
-	//	[self drawDiscRect:aRect];
+		[self.cachedHilightedBodyImage drawInRect:self.bounds];
+	//	[self drawBodyRect:aRect];
 	CGPoint		theThumbLocation = self.location;
 	CGRect		theThumbRect = self.thumbRect;
 	theThumbRect.origin.x += theThumbLocation.x;
 	theThumbRect.origin.y += theThumbLocation.y;
 	if( self.state & UIControlStateHighlighted )
-		[[self cachedThumbImage] drawInRect:theThumbRect];
-	else
 		[[self cachedHilightedThumbImage] drawInRect:theThumbRect];
+	else
+		[[self cachedThumbImage] drawInRect:theThumbRect];
 }
 
 #pragma mark -
@@ -524,18 +524,18 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 	cachedHilightedThumbImage = nil;
 }
 
-- (void)deleteDiscCache
+- (void)deleteBodyCache
 {
-	[cachedDiscImage release];			// force it to be recreated for new size
-	cachedDiscImage = nil;
-	[cachedHilightedDiscImage release];
-	cachedHilightedDiscImage = nil;
+	[cachedBodyImage release];			// force it to be recreated for new size
+	cachedBodyImage = nil;
+	[cachedHilightedBodyImage release];
+	cachedHilightedBodyImage = nil;
 }
 
 #pragma mark -
 #pragma mark methods to override to change look
 
-- (CGRect)controlRect
+- (CGRect)bodyRect
 {
 	CGRect		theResult = self.bounds;
 	CGRect		theBounds = theResult;
@@ -549,7 +549,7 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 
 - (CGRect)thumbRect
 {
-	CGRect			theBounds = self.controlRect;
+	CGRect			theBounds = self.bodyRect;
 	CGFloat			theBoundsSize = MIN(CGRectGetWidth(theBounds), CGRectGetHeight(theBounds));
 	CGFloat			theThumbDiam = theBoundsSize * 0.25;
 	if( theThumbDiam < 5.0 )
@@ -563,7 +563,7 @@ static BOOL decodeBooleanWithDefault( NSCoder * aCoder, NSString * aKey, BOOL aD
 	return shrinkRect(theThumbBounds, CGSizeMake(-1.0,-1.0) );
 }
 
-static CGGradientRef shadowDiscGradient( CGColorSpaceRef aColorSpace )
+static CGGradientRef shadowBodyGradient( CGColorSpaceRef aColorSpace )
 {
 	CGFloat			theLocations[] = { 0.0, 0.3, 0.6, 1.0 };
 	CGFloat			theComponents[sizeof(theLocations)/sizeof(*theLocations)*4] = { 0.0, 0.0, 0.0, 0.25,  // 0
@@ -573,28 +573,28 @@ static CGGradientRef shadowDiscGradient( CGColorSpaceRef aColorSpace )
 	return CGGradientCreateWithColorComponents( aColorSpace, theComponents, theLocations, sizeof(theLocations)/sizeof(*theLocations) );
 }
 
-static CGGradientRef hilightDiscGradient( CGColorSpaceRef aColorSpace )
+static CGGradientRef hilightBodyGradient( CGColorSpaceRef aColorSpace, BOOL aHilighted )
 {
 	CGFloat			theLocations[] = { 0.0, 0.3, 0.6, 1.0 };
+	CGFloat			theModifier = aHilighted ? 1.0 : 0.33;
 	CGFloat			theComponents[sizeof(theLocations)/sizeof(*theLocations)*4] = { 1.0, 1.0, 1.0, 0.0225,  // 0
-																					1.0, 1.0, 1.0, 0.33, // 1
+																					1.0, 1.0, 1.0, 0.33 * theModifier, // 1
 																					1.0, 1.0, 1.0, 0.0225, // 1
 																					1.0, 1.0, 1.0, 0.0 }; // 2
 	return CGGradientCreateWithColorComponents( aColorSpace, theComponents, theLocations, sizeof(theLocations)/sizeof(*theLocations) );
 }
 
-- (BOOL)drawDiscInRect:(CGRect)aRect hilighted:(BOOL)aHilighted
+- (BOOL)drawBodyInRect:(CGRect)aRect hilighted:(BOOL)aHilighted
 {
 	CGContextRef	theContext = UIGraphicsGetCurrentContext();
 	CGContextSaveGState( theContext );
 
-	CGFloat			theStartRadius = CGRectGetHeight( aRect )*0.50,
-					theEndRadius = theStartRadius * 0.85;
+	CGFloat			theStartRadius = CGRectGetHeight( aRect )*0.50;
 	CGPoint			theStartCenter = CGPointMake( CGRectGetMidX(aRect), CGRectGetMidY(aRect) ),
 					theShadowEndCenter = CGPointMake(theStartCenter.x, theStartCenter.y-0.05*theStartRadius ),
 					theHilightEndCenter = CGPointMake(theStartCenter.x, theStartCenter.y+0.1*theStartRadius );
 	CGColorSpaceRef	theColorSpace = CGColorGetColorSpace(self.backgroundColor.CGColor);
-	CGFloat			theDiscShadowColorComponents[] = { 0.0, 0.0, 0.0, 0.2 };
+	CGFloat			theBodyShadowColorComponents[] = { 0.0, 0.0, 0.0, 0.2 };
 
 	if( aHilighted )
 		CGContextSetRGBFillColor( theContext, 0.9, 0.9, 0.9, 1.0);
@@ -604,12 +604,12 @@ static CGGradientRef hilightDiscGradient( CGColorSpaceRef aColorSpace )
 	CGContextSetRGBStrokeColor(theContext, 0.75, 0.75, 0.75, 1.0);
 	CGContextRef	theBaseContext = UIGraphicsGetCurrentContext();
 	CGContextSaveGState( theBaseContext );
-	CGContextSetShadowWithColor( theBaseContext, CGSizeMake(0.0, theStartRadius*0.05), 2.0, CGColorCreate( theColorSpace, theDiscShadowColorComponents ) );
+	CGContextSetShadowWithColor( theBaseContext, CGSizeMake(0.0, theStartRadius*0.05), 2.0, CGColorCreate( theColorSpace, theBodyShadowColorComponents ) );
 	CGContextFillEllipseInRect( theBaseContext, aRect );
 	CGContextRestoreGState( theBaseContext );
 
-	CGContextDrawRadialGradient( theContext, hilightDiscGradient(theColorSpace), theStartCenter, theStartRadius, theHilightEndCenter, theEndRadius, 0.0 );
-	CGContextDrawRadialGradient( theContext, shadowDiscGradient(theColorSpace), theStartCenter, theStartRadius, theShadowEndCenter, theEndRadius, 0.0 );
+	CGContextDrawRadialGradient( theContext, hilightBodyGradient(theColorSpace,aHilighted), theStartCenter, theStartRadius, theHilightEndCenter, theStartRadius*0.85, 0.0 );
+	CGContextDrawRadialGradient( theContext, shadowBodyGradient(theColorSpace), theStartCenter, theStartRadius, theShadowEndCenter, theStartRadius*0.85, 0.0 );
 
 	CGContextSetAllowsAntialiasing( theContext, YES );
 	CGContextSetRGBStrokeColor( theContext, 0.5, 0.5, 0.5, 1.0 );
@@ -631,30 +631,33 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 
 - (BOOL)drawThumbInRect:(CGRect)aRect hilighted:(BOOL)aHilighted
 {
-	CGContextRef	theContext = UIGraphicsGetCurrentContext();
-	CGContextSaveGState( theContext );
+	if( !aHilighted )
+	{
+		CGContextRef	theContext = UIGraphicsGetCurrentContext();
+		CGContextSaveGState( theContext );
 
-	CGContextRef	theThumbContext = UIGraphicsGetCurrentContext();
-	CGContextSaveGState( theThumbContext );
+		CGContextRef	theThumbContext = UIGraphicsGetCurrentContext();
+		CGContextSaveGState( theThumbContext );
 
-	CGColorSpaceRef	theColorSpace = CGColorGetColorSpace(self.backgroundColor.CGColor);
-	CGRect			theThumbBounds = aRect;
-	CGFloat			theThumbDiam = CGRectGetWidth( theThumbBounds );
-	CGPoint			theCenter = CGPointMake(CGRectGetMidX(aRect), CGRectGetMidY(aRect) );
+		CGColorSpaceRef	theColorSpace = CGColorGetColorSpace(self.backgroundColor.CGColor);
+		CGRect			theThumbBounds = aRect;
+		CGFloat			theThumbDiam = CGRectGetWidth( theThumbBounds );
+		CGPoint			theCenter = CGPointMake(CGRectGetMidX(aRect), CGRectGetMidY(aRect) );
 
-	CGContextAddEllipseInRect( theThumbContext, theThumbBounds );
-	CGContextClip( theThumbContext );
+		CGContextAddEllipseInRect( theThumbContext, theThumbBounds );
+		CGContextClip( theThumbContext );
 
-	CGPoint			theStartThumbPoint = CGPointMake(theCenter.x, theCenter.y-theThumbDiam/2.0-theThumbDiam*1.3),
-					theEndThumbPoint = CGPointMake(theCenter.x, theCenter.y+theThumbDiam/2.0-theThumbDiam);
-	CGContextDrawRadialGradient( theThumbContext, thumbGradient( theColorSpace, self.thumbTint ), theStartThumbPoint, 1.3*theThumbDiam, theEndThumbPoint, theThumbDiam, 0.0 );
+		CGPoint			theStartThumbPoint = CGPointMake(theCenter.x, theCenter.y-theThumbDiam/2.0-theThumbDiam*1.3),
+						theEndThumbPoint = CGPointMake(theCenter.x, theCenter.y+theThumbDiam/2.0-theThumbDiam);
+		CGContextDrawRadialGradient( theThumbContext, thumbGradient( theColorSpace, self.thumbTint ), theStartThumbPoint, 1.3*theThumbDiam, theEndThumbPoint, theThumbDiam, 0.0 );
 
-	CGContextRestoreGState( theThumbContext );
-	CGContextSetRGBStrokeColor( theContext, 0.3, 0.3, 0.3, 0.15 );
-	CGContextSetAllowsAntialiasing( theContext, YES );
-	CGContextStrokeEllipseInRect( theContext, theThumbBounds );
-	CGContextRestoreGState( theContext );
-	return aHilighted ? NO : YES;
+		CGContextRestoreGState( theThumbContext );
+		CGContextSetRGBStrokeColor( theContext, 0.3, 0.3, 0.3, 0.15 );
+		CGContextSetAllowsAntialiasing( theContext, YES );
+		CGContextStrokeEllipseInRect( theContext, theThumbBounds );
+		CGContextRestoreGState( theContext );
+	}
+	return !aHilighted;
 }
 
 #pragma mark -
@@ -665,7 +668,7 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 
 - (CGPoint)location
 {
-	CGRect			theBounds = self.controlRect,
+	CGRect			theBounds = self.bodyRect,
 					theThumbRect = self.thumbRect;
 	return mapPoint( self.constrainedCartesianPoint, CGRectMake(-1.0, -1.0, 2.0, 2.0), shrinkRect(theBounds, CGSizeMake(CGRectGetWidth(theThumbRect)*0.68,CGRectGetHeight(theThumbRect)*0.68) ) );
 }
@@ -674,7 +677,7 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 {
 	if( self.style != NDRotatorStyleLinear )
 	{
-		CGRect		theBounds = self.controlRect,
+		CGRect		theBounds = self.bodyRect,
 					theThumbRect = self.thumbRect;
 		self.cartesianPoint = mapPoint(aPoint, shrinkRect(theBounds, CGSizeMake(CGRectGetWidth(theThumbRect)*0.68,CGRectGetHeight(theThumbRect)*0.68) ), CGRectMake(-1.0, -1.0, 2.0, 2.0 ) );
 	}
@@ -685,32 +688,34 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 	}
 }
 
-- (UIImage *)cachedDiscImage
+- (UIImage *)cachedBodyImage
 {
-	if( cachedDiscImage == nil )
+	if( cachedBodyImage == nil )
 	{
 		CGRect		theBounds = self.bounds;
 		UIGraphicsBeginImageContext( theBounds.size );
-		[self drawDiscInRect:self.controlRect hilighted:NO];
-		cachedDiscImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		if( [self drawBodyInRect:self.bodyRect hilighted:NO] )
+			cachedBodyImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		else
+			cachedBodyImage = [self.cachedHilightedBodyImage retain];
 		UIGraphicsEndImageContext();
 	}
-	return cachedDiscImage;
+	return cachedBodyImage;
 }
 
-- (UIImage *)cachedHilightedDiscImage
+- (UIImage *)cachedHilightedBodyImage
 {
-	if( cachedHilightedDiscImage == nil )
+	if( cachedHilightedBodyImage == nil )
 	{
 		CGRect		theBounds = self.bounds;
 		UIGraphicsBeginImageContext( theBounds.size );
-		if( [self drawDiscInRect:self.controlRect hilighted:YES] )
-			cachedHilightedDiscImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		if( [self drawBodyInRect:self.bodyRect hilighted:YES] )
+			cachedHilightedBodyImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
 		else
-			cachedHilightedDiscImage = [cachedDiscImage retain];
+			cachedHilightedBodyImage = [self.cachedBodyImage retain];
 		UIGraphicsEndImageContext();
 	}
-	return cachedHilightedDiscImage;
+	return cachedHilightedBodyImage;
 }
 
 - (UIImage *)cachedThumbImage
@@ -721,8 +726,10 @@ static CGGradientRef thumbGradient( CGColorSpaceRef aColorSpace, enum NDThumbTin
 		theThumbRect.origin.x = 0;
 		theThumbRect.origin.y = 0;
 		UIGraphicsBeginImageContext( theThumbRect.size );
-		[self drawThumbInRect:theThumbRect hilighted:NO];
-		cachedThumbImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		if( [self drawThumbInRect:theThumbRect hilighted:NO] )
+			cachedThumbImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		else
+			cachedThumbImage = [self.cachedHilightedThumbImage retain];
 		UIGraphicsEndImageContext();
 	}
 	return cachedThumbImage;

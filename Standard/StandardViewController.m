@@ -50,6 +50,7 @@ static NSString		* const kThumbTintStr[] = { @"grey", @"red", @"green", @"blue",
 	self.rotatorView.style = NDRotatorStyleRotate;
 	[self updateOutputValueFields];
     [super viewDidLoad];
+	self.title = @"Standard";
 }
 
 - (void)viewDidUnload
