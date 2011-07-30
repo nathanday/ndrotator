@@ -3,3 +3,5 @@ This is an initial release and still requires documentation. I also want to make
 Know Issues
 - Currently the minimumDomain and maximumDomain are not respected when the style is NDRotatorStyleLinear and wrapAround is YES.
 - No unit tests.
+- Added means to specify the the base or the thumb are rotated, so that a cached image can be used for all values by simple ration.
+- Add a means to turn of caching for thumb or base if the look of the thumb or base changing to much for changes in value for caching to be useful. Perhaps a mechanism for post processing of cached images could be added to get the best of both worlds, no caching consume too many CPU cycles except for really basic images on low powers devices like iPhone.
